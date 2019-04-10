@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { getComicsList } from './api';
+import Comics from './Comics';
+
+const Title = ({ title }) => <h2>{title}</h2>;
+const Image = ({ path, extension, alt }) => (
+  <img src={`${path}.${extension}`} alt={alt} />
+);
+
 class App extends Component {
+  state = {
+    list: [],
+  };
+  async componentDidMount() {
+    const list = await getComicsList();
+    this.setState({ list });
+  }
   render() {
+    const { list } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {list.map(comics => (
+          <Comics
+            key={comics.id}
+            title={<Title title={comics.title} />}
+            image={<Image {...comics.thumbnail} />}
+          />
+        ))}
       </div>
     );
   }
