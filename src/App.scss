@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 70vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+nav {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .search__item {
+    height: 40px;
+    margin: 10px;
+    padding: 10px 24px;
+    text-align: center;
+    z-index: 1;
+    padding: 0 20px;
+    background: white;
+    font-size: 16px;
+    border-radius: 16px;
+    font-family: inherit;
+    appearance: none;
+    text-align: center;
+    line-height: 1.4rem;
+    border: 0;
+    box-shadow: 9px 7px 40px 1px rgba(0, 0, 0, 0.25);
+  }
+  .search__item:focus {
+    outline: none;
+    border: 1px solid blue;
+  }
+  .search__input {
+    width: 50vw;
+  }
+  .search__button {
+    background: tomato;
+  }
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 80px;
+}
+
+.comics-wrapper {
+  margin: 20px;
+  width: 200px;
+  box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);
+  .image {
+    padding: 10px;
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  transform: scale(1);
+  transition: 0.6s ease;
+  cursor: pointer;
+}
+.comics-wrapper:hover {
+  transform: scale(1.2);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
