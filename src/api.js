@@ -1,17 +1,26 @@
-const API_KEY = `1136faa63131cec339ae63058b627b70`;
-const API_TIMESTAMP = `1`;
-// a md5 digest of the ts parameter, your private key and your public key (e.g. md5(ts+privateKey+publicKey)
-const API_HASH = `7abf5f031a9f3f0031ac8c51fcfe8da0`;
-const API_BASE = `http://gateway.marvel.com/v1/public/comics`;
-
-const requests = `${API_BASE}?ts=${API_TIMESTAMP}&apikey=${API_KEY}&hash=${API_HASH}`;
-
-export const getComicsList = async () => {
-  const response = await fetch(requests);
-  const results = await response.json();
-  return results.data.results;
+let url = new URL(`http://gateway.marvel.com/v1/public/comics`),
+  params = {
+    ts: '1',
+    apikey: '1136faa63131cec339ae63058b627b70',
+    hash: '7abf5f031a9f3f0031ac8c51fcfe8da0',
+    limit: '50',
+  };
+Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+const ignores = ['http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708'];
+const checkingThumbnail = item => {
+  if (!item.thumbnail || !item.thumbnail.path) {
+    return false;
+  }
+  var thumb = item.thumbnail;
+  return (
+    thumb.path.indexOf('image_not_available') === -1 &&
+    ignores.indexOf(thumb.path) === -1
+  );
 };
 
-// var url = new URL('https://geo.example.org/api'),
-//   params = { lat: 35.696233, long: 139.570431 };
-// Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+export const getComicsList = async () => {
+  const response = await fetch(url);
+  const results = await response.json();
+  const comicsWithThumbnail = results.data.results.filter(checkingThumbnail);
+  return comicsWithThumbnail;
+};
