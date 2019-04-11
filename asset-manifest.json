@@ -1,5 +1,5 @@
 {
-  "main.css": "/comics/static/css/main.9b2490a9.chunk.css",
+  "main.css": "/comics/static/css/main.8bfd3006.chunk.css",
   "main.js": "/comics/static/js/main.357d0de9.chunk.js",
   "main.js.map": "/comics/static/js/main.357d0de9.chunk.js.map",
   "runtime~main.js": "/comics/static/js/runtime~main.14d91cc0.js",
@@ -7,8 +7,8 @@
   "static/js/2.09780357.chunk.js": "/comics/static/js/2.09780357.chunk.js",
   "static/js/2.09780357.chunk.js.map": "/comics/static/js/2.09780357.chunk.js.map",
   "index.html": "/comics/index.html",
-  "precache-manifest.e39752fac388f79e7722e86ad1cbc8e3.js": "/comics/precache-manifest.e39752fac388f79e7722e86ad1cbc8e3.js",
+  "precache-manifest.1c4e87720701e67be84ecb6e4dd678b4.js": "/comics/precache-manifest.1c4e87720701e67be84ecb6e4dd678b4.js",
   "service-worker.js": "/comics/service-worker.js",
-  "static/css/main.9b2490a9.chunk.css.map": "/comics/static/css/main.9b2490a9.chunk.css.map",
+  "static/css/main.8bfd3006.chunk.css.map": "/comics/static/css/main.8bfd3006.chunk.css.map",
   "static/media/GravityAnimating.svg": "/comics/static/media/GravityAnimating.34068f26.svg"
 }
