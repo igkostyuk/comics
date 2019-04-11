@@ -102,19 +102,22 @@ main {
 }
 .popup_inner {
   position: absolute;
+  border-radius: 16px;
   left: 25%;
   right: 25%;
   top: 25%;
-  bottom: 25%;
   margin: auto;
-  background: white;
+  background: #141b1f;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   .popup_inner-left {
     width: 45%;
+    padding: 2%;
     img {
+      border-radius: 16px;
+      margin-top: 5%;
       object-fit: cover;
       height: 100%;
       width: 100%;
@@ -123,8 +126,13 @@ main {
   .popup_inner-right {
     width: 45%;
     padding: 2%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     h2 {
       font-size: 1.6vh;
+      margin-bottom: 15%;
     }
     p {
       font-size: 12px;
@@ -132,7 +140,7 @@ main {
   }
   button {
     height: 40px;
-    margin: 10px;
+    margin-bottom: 2%;
     padding: 10px 24px;
     text-align: center;
     z-index: 1;
