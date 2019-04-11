@@ -1,4 +1,4 @@
-let url = new URL(`http://gateway.marvel.com/v1/public/comics`),
+let url = new URL(`https://gateway.marvel.com/v1/public/comics`),
   params = {
     ts: '1',
     apikey: '1136faa63131cec339ae63058b627b70',
