@@ -88,3 +88,73 @@ main {
     transform: rotate(360deg);
   }
 }
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: transparent;
+  animation: colorchange 1s ease 0s 1 normal forwards;
+}
+.popup_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  .popup_inner-left {
+    width: 45%;
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .popup_inner-right {
+    width: 45%;
+    padding: 2%;
+    h2 {
+      font-size: 1.6vh;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+  button {
+    height: 40px;
+    margin: 10px;
+    padding: 10px 24px;
+    text-align: center;
+    z-index: 1;
+    padding: 0 20px;
+    background: tomato;
+    font-size: 16px;
+    border-radius: 16px;
+    font-family: inherit;
+    appearance: none;
+    text-align: center;
+    line-height: 1.4rem;
+    border: 0;
+    box-shadow: 9px 7px 40px 1px rgba(0, 0, 0, 0.25);
+  }
+  button:focus {
+    outline: none;
+    border: 1px solid blue;
+  }
+}
+@keyframes colorchange {
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+    animation-play-state: paused;
+  }
+}
