@@ -72,7 +72,10 @@ class App extends Component {
     return (
       <div className="App">
         <nav>
-          <InputWrapper handleSubmit={this.setComicsLParams} />
+          <InputWrapper
+            handleSubmit={this.setComicsLParams}
+            limit={searchParams.limit}
+          />
         </nav>
 
         {isLoading ? (

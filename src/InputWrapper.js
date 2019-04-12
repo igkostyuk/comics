@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputWrapper = ({ handleSubmit }) => {
+const InputWrapper = ({ handleSubmit, limit }) => {
   const onSubmit = ev => {
     ev.preventDefault();
     const { elements } = ev.target;
@@ -20,7 +20,11 @@ const InputWrapper = ({ handleSubmit }) => {
         <option value="title">Order by: title</option>
         <option value="-title">Order by: -title</option>
       </select>
-      <select className="search__item search__select" name="limit">
+      <select
+        value={limit}
+        className="search__item search__select"
+        name="limit"
+      >
         <option value="10">Comics per page: 10</option>
         <option value="20">Comics per page: 20</option>
         <option value="30">Comics per page: 30</option>

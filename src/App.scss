@@ -24,6 +24,7 @@
 }
 
 nav {
+  padding: 0 80px;
   width: 100%;
   margin-top: 40px;
   display: flex;
@@ -41,7 +42,7 @@ nav {
     text-align: center;
     z-index: 1;
     background: white;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 16px;
     font-family: inherit;
     appearance: none;
@@ -55,9 +56,6 @@ nav {
     border: 1px solid blue;
   }
 
-  .search__input {
-    width: 40vw;
-  }
   .search__button {
     background: tomato;
   }
