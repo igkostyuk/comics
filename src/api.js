@@ -40,8 +40,6 @@ export const getComicsList = async () => {
   const response = await fetch(url);
   const results = await response.json();
   const { offset, total } = await results.data;
-  console.log('AAA', offset, total);
   const list = await results.data.results.filter(checkingThumbnail);
-  console.log(results);
   return { list, offset, total };
 };
