@@ -1,32 +1,71 @@
 import React from 'react';
 
-const Pagination = ({ limit, offset, total }) => {
-  console.log(limit, offset, total);
+const Pagination = ({ limit, offset, total, handleClick }) => {
   if (total && limit) {
     const getPageNumber = itemsPerPage => Math.ceil(itemsPerPage / limit);
-    const currentPage = getPageNumber(offset);
-    const lastPage = getPageNumber(total);
-    let numberOfNearPage = 5;
-    numberOfNearPage =
-      numberOfNearPage % 2 ? numberOfNearPage++ : numberOfNearPage;
-    let nearPagesArr = Array.from(new Array(numberOfNearPage));
-    let pageArr;
-    if (1 < lastPage && lastPage < 6) {
-      pageArr = [1, 2, 3, 4, 5];
-    }
-    if (lastPage < 4 && lastPage > 6) {
-      pageArr = [1, 2, 3, 4, 5, '...', lastPage];
-    }
-    if (lastPage - currentPage < 2 && lastPage > 6) {
-      pageArr = [1, '...', ...nearPagesArr];
-    }
+    let currentPage = getPageNumber(offset) + 1;
+    currentPage = !currentPage ? 1 : currentPage;
+    const lastPage = getPageNumber(total) - 1;
+    const getPager = () => {
+      let pagerSize = 5;
+      pagerSize = pagerSize % 2 ? pagerSize++ : pagerSize;
+      const middleOfPager = Math.ceil(pagerSize / 2);
+      const createOrderedArr = size =>
+        Array.from(new Array(size)).map((el, index) => index + 1);
+      const orderedPagerSizeArr = createOrderedArr(pagerSize);
+      if (lastPage < 1) {
+        return [];
+      }
+      if (1 <= lastPage && lastPage <= pagerSize) {
+        return createOrderedArr(lastPage);
+      }
+      if (lastPage > pagerSize) {
+        if (currentPage <= middleOfPager) {
+          return [...orderedPagerSizeArr, '...', lastPage];
+        }
+        let pagerArr = orderedPagerSizeArr.map(
+          el => currentPage - middleOfPager + el,
+        );
 
-    pageArr = [1, '...', ...nearPagesArr, '...', lastPage];
+        if (currentPage === middleOfPager + 1) {
+          return [1, ...pagerArr, '...', lastPage];
+        }
+
+        if (currentPage === lastPage - middleOfPager) {
+          return [1, '...', ...pagerArr, lastPage];
+        }
+        let orderedArrBelowLastPage = orderedPagerSizeArr
+          .map(el => lastPage - el + 1)
+          .reverse();
+        if (currentPage > lastPage - middleOfPager) {
+          return [1, '...', ...orderedArrBelowLastPage];
+        }
+        return [1, '...', ...pagerArr, '...', lastPage];
+      }
+    };
+    const pager = getPager();
+
+    const onClick = e => {
+      const pageNumber = e.target.innerHTML;
+      if (
+        e.target.matches('li') &&
+        pageNumber !== '...' &&
+        pageNumber !== currentPage
+      )
+        console.log(pageNumber);
+      handleClick({ offset: (pageNumber - 1) * limit });
+    };
 
     return (
-      <ul>
-        {pageArr.map((page, index) => {
-          return <li key={index}>{index + 1}</li>;
+      <ul className="pagination_list" onClick={onClick}>
+        {pager.map((page, index) => {
+          return page === currentPage ? (
+            <li className="pagination_selected-list-item" key={index}>
+              {page}
+            </li>
+          ) : (
+            <li key={index}>{page}</li>
+          );
         })}
       </ul>
     );

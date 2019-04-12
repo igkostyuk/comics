@@ -22,7 +22,7 @@ class App extends Component {
       titleStartsWith: '',
       limit: 20,
       offset: 0,
-      total: 20,
+      total: 0,
     },
     showPopup: false,
   };
@@ -74,20 +74,23 @@ class App extends Component {
         <nav>
           <InputWrapper handleSubmit={this.setComicsLParams} />
         </nav>
-        <Pagination {...searchParams} />
+
         {isLoading ? (
           <img src={loader} className="App-logo" alt="logo" />
         ) : (
-          <main onClick={this.onClick}>
-            {list.map(comics => (
-              <Comics
-                key={comics.id}
-                title={<Title title={comics.title} />}
-                image={<Image {...comics.thumbnail} alt={comics.title} />}
-              />
-            ))}
-            {!list.length ? <h2>Oops nothing found :(</h2> : null}
-          </main>
+          <>
+            <main onClick={this.onClick}>
+              {list.map(comics => (
+                <Comics
+                  key={comics.id}
+                  title={<Title title={comics.title} />}
+                  image={<Image {...comics.thumbnail} alt={comics.title} />}
+                />
+              ))}
+              {!list.length ? <h2>Oops nothing found ":("</h2> : null}
+            </main>
+            <Pagination handleClick={this.setComicsLParams} {...searchParams} />
+          </>
         )}
         {showPopup ? (
           <Popup

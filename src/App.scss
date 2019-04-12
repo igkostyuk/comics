@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .App-logo {
@@ -21,6 +24,7 @@
 }
 
 nav {
+  width: 100%;
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
@@ -33,12 +37,11 @@ nav {
   .search__item {
     height: 40px;
     margin: 10px;
-    padding: 10px 24px;
+    padding: 5px 20px;
     text-align: center;
     z-index: 1;
-    padding: 0 20px;
     background: white;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 16px;
     font-family: inherit;
     appearance: none;
@@ -51,8 +54,11 @@ nav {
     outline: none;
     border: 1px solid blue;
   }
+  .search__select {
+    font-size: 12px;
+  }
   .search__input {
-    width: 50vw;
+    width: 40vw;
   }
   .search__button {
     background: tomato;
@@ -178,5 +184,18 @@ main {
 @keyframes sizechange {
   100% {
     transform: scale(1);
+  }
+}
+.pagination_list {
+  align-self: flex-end;
+  display: flex;
+  list-style-type: none;
+  li {
+    margin: 10px;
+    cursor: pointer;
+  }
+  .pagination_selected-list-item {
+    color: tomato;
+    font-weight: bold;
   }
 }

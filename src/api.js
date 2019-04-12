@@ -7,6 +7,7 @@ let url = new URL(`https://gateway.marvel.com/v1/public/comics`),
     formatType: 'comic',
     noVariants: true,
     hasDigitalIssue: false,
+    limit: 20,
   };
 Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -22,9 +23,14 @@ const checkingThumbnail = item => {
   );
 };
 export const setComicsSearchParams = searchParams => {
-  const avaibleSearchParamsArr = ['orderBy', 'titleStartsWith', 'limit'];
+  const availableSearchParamsArr = [
+    'orderBy',
+    'titleStartsWith',
+    'limit',
+    'offset',
+  ];
 
-  avaibleSearchParamsArr.forEach(paramsKey =>
+  availableSearchParamsArr.forEach(paramsKey =>
     !searchParams[paramsKey]
       ? url.searchParams.delete(paramsKey)
       : url.searchParams.set(paramsKey, searchParams[paramsKey]),

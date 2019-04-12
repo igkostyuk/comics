@@ -14,11 +14,17 @@ const InputWrapper = ({ handleSubmit }) => {
   };
   return (
     <form onSubmit={onSubmit}>
-      <select className="search__item" name="orderBy">
+      <select className="search__item search__select" name="orderBy">
         <option value="modified">Order by: modified</option>
         <option value="-modified">Order by: -modified</option>
         <option value="title">Order by: title</option>
         <option value="-title">Order by: -title</option>
+      </select>
+      <select className="search__item search__select" name="limit">
+        <option value="10">Comics per page: 10</option>
+        <option value="20">Comics per page: 20</option>
+        <option value="30">Comics per page: 30</option>
+        <option value="50">Comics per page: 50</option>
       </select>
       <input
         className="search__item search__input"
