@@ -4,6 +4,7 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
+  margin-top: 5vmin;
   height: 70vmin;
   pointer-events: none;
 }
@@ -24,6 +25,11 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  background-color: white;
   .search__item {
     height: 40px;
     margin: 10px;
@@ -99,6 +105,13 @@ main {
   margin: auto;
   background-color: transparent;
   animation: colorchange 1s ease 0s 1 normal forwards;
+  z-index: 2;
+}
+@keyframes colorchange {
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+    animation-play-state: paused;
+  }
 }
 .popup_inner {
   position: absolute;
@@ -112,6 +125,8 @@ main {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  animation: sizechange 1s ease 0s 1 normal forwards;
+  transform: scale(0.2);
   .popup_inner-left {
     width: 45%;
     padding: 2%;
@@ -160,9 +175,8 @@ main {
     border: 1px solid blue;
   }
 }
-@keyframes colorchange {
+@keyframes sizechange {
   100% {
-    background-color: rgba(0, 0, 0, 0.5);
-    animation-play-state: paused;
+    transform: scale(1);
   }
 }

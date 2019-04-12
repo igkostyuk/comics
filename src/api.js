@@ -3,13 +3,10 @@ let url = new URL(`https://gateway.marvel.com/v1/public/comics`),
     ts: '1',
     apikey: '1136faa63131cec339ae63058b627b70',
     hash: '7abf5f031a9f3f0031ac8c51fcfe8da0',
-    limit: '50',
     format: 'comic',
     formatType: 'comic',
     noVariants: true,
     hasDigitalIssue: false,
-    orderBy: 'modified',
-    titleStartsWith: 'l',
   };
 Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -24,16 +21,21 @@ const checkingThumbnail = item => {
     ignores.indexOf(thumb.path) === -1
   );
 };
-export const setComicsSearchParams = ({ orderBy, titleStartsWith }) => {
-  url.searchParams.set('orderBy', orderBy);
-  url.searchParams.delete('titleStartsWith');
-  titleStartsWith &&
-    url.searchParams.append('titleStartsWith', titleStartsWith);
+export const setComicsSearchParams = searchParams => {
+  const avaibleSearchParamsArr = ['orderBy', 'titleStartsWith', 'limit'];
+
+  avaibleSearchParamsArr.forEach(paramsKey =>
+    !searchParams[paramsKey]
+      ? url.searchParams.delete(paramsKey)
+      : url.searchParams.set(paramsKey, searchParams[paramsKey]),
+  );
 };
 export const getComicsList = async () => {
   const response = await fetch(url);
   const results = await response.json();
-  const comicsWithThumbnail = results.data.results.filter(checkingThumbnail);
-  console.log(comicsWithThumbnail);
-  return comicsWithThumbnail;
+  const { offset, total } = await results.data;
+  console.log('AAA', offset, total);
+  const list = await results.data.results.filter(checkingThumbnail);
+  console.log(results);
+  return { list, offset, total };
 };

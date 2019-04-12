@@ -7,6 +7,7 @@ import { getComicsList, setComicsSearchParams } from './api';
 import Popup from './Popup';
 import Comics from './Comics';
 import InputWrapper from './InputWrapper';
+import Pagination from './Pagination';
 
 const Title = ({ title }) => <h2>{title}</h2>;
 const Image = ({ path, extension, alt }) => (
@@ -16,24 +17,43 @@ class App extends Component {
   state = {
     list: [],
     isLoading: true,
-    searchParams: { orderBy: 'modified' },
+    searchParams: {
+      orderBy: 'modified',
+      titleStartsWith: '',
+      limit: 20,
+      offset: 0,
+      total: 20,
+    },
     showPopup: false,
   };
 
   async componentDidMount() {
-    const list = await getComicsList();
-    this.setState({ list, isLoading: false });
+    this.updateComicsDate();
   }
-  setComicsLParams = async searchParams => {
-    this.setState({ searchParams, isLoading: true });
-    setComicsSearchParams(searchParams);
-    const list = await getComicsList();
-    await this.setState({ list, isLoading: false });
+  updateComicsDate = async () => {
+    const { list, offset, total } = await getComicsList();
+    this.updateSearchParams({ offset, total });
+    this.setState({ list, isLoading: false });
+  };
+  updateSearchParams = params => {
+    let { searchParams } = this.state;
+    searchParams = Object.assign(searchParams, params);
+    this.setState(searchParams);
+  };
+  setComicsLParams = async params => {
+    this.setState({ isLoading: true });
+    this.updateSearchParams(params);
+    setComicsSearchParams(this.state.searchParams);
+    this.updateComicsDate();
   };
   onClick = e => {
     const title = e.target.alt;
-    const targetComics = this.state.list.find(comics => comics.title === title);
-    this.togglePopup(targetComics);
+    if (e.target.alt) {
+      const targetComics = this.state.list.find(
+        comics => comics.title === title,
+      );
+      this.togglePopup(targetComics);
+    }
   };
   togglePopup = (targetComics = {}) => {
     this.setState({
@@ -42,12 +62,19 @@ class App extends Component {
     });
   };
   render() {
-    const { list, isLoading, targetComics, showPopup } = this.state;
+    const {
+      list,
+      isLoading,
+      targetComics,
+      showPopup,
+      searchParams,
+    } = this.state;
     return (
       <div className="App">
         <nav>
           <InputWrapper handleSubmit={this.setComicsLParams} />
         </nav>
+        <Pagination {...searchParams} />
         {isLoading ? (
           <img src={loader} className="App-logo" alt="logo" />
         ) : (
@@ -59,6 +86,7 @@ class App extends Component {
                 image={<Image {...comics.thumbnail} alt={comics.title} />}
               />
             ))}
+            {!list.length ? <h2>Oops nothing found :(</h2> : null}
           </main>
         )}
         {showPopup ? (
