@@ -74,7 +74,7 @@ class App extends Component {
         <nav>
           <InputWrapper
             handleSubmit={this.setComicsLParams}
-            limit={searchParams.limit}
+            {...searchParams}
           />
         </nav>
 
@@ -92,7 +92,7 @@ class App extends Component {
               ))}
               {!list.length ? <h2>Oops nothing found ":("</h2> : null}
             </main>
-            <Pagination handleClick={this.setComicsLParams} {...searchParams} />
+            <Pagination handleClick={this.setComicsParams} {...searchParams} />
           </>
         )}
         {showPopup ? (
