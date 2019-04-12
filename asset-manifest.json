@@ -1,14 +1,14 @@
 {
-  "main.css": "/comics/static/css/main.a3cbf3be.chunk.css",
-  "main.js": "/comics/static/js/main.5917f6cf.chunk.js",
-  "main.js.map": "/comics/static/js/main.5917f6cf.chunk.js.map",
+  "main.css": "/comics/static/css/main.a6f2ca5d.chunk.css",
+  "main.js": "/comics/static/js/main.c9f9b752.chunk.js",
+  "main.js.map": "/comics/static/js/main.c9f9b752.chunk.js.map",
   "runtime~main.js": "/comics/static/js/runtime~main.14d91cc0.js",
   "runtime~main.js.map": "/comics/static/js/runtime~main.14d91cc0.js.map",
   "static/js/2.1fc280d1.chunk.js": "/comics/static/js/2.1fc280d1.chunk.js",
   "static/js/2.1fc280d1.chunk.js.map": "/comics/static/js/2.1fc280d1.chunk.js.map",
   "index.html": "/comics/index.html",
-  "precache-manifest.119dbb250c3e5d7a382a82411ee4733b.js": "/comics/precache-manifest.119dbb250c3e5d7a382a82411ee4733b.js",
+  "precache-manifest.24d956f35a2e4d46170be8c4f5fe26a9.js": "/comics/precache-manifest.24d956f35a2e4d46170be8c4f5fe26a9.js",
   "service-worker.js": "/comics/service-worker.js",
-  "static/css/main.a3cbf3be.chunk.css.map": "/comics/static/css/main.a3cbf3be.chunk.css.map",
+  "static/css/main.a6f2ca5d.chunk.css.map": "/comics/static/css/main.a6f2ca5d.chunk.css.map",
   "static/media/GravityAnimating.svg": "/comics/static/media/GravityAnimating.34068f26.svg"
 }
