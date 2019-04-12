@@ -38,7 +38,6 @@ const InputWrapper = ({ handleSubmit, limit, orderBy }) => {
         className="search__item search__input"
         placeholder="title starts with ....."
         name="titleStartsWith"
-        readOnly
       />
       <button className="search__item search__button">search</button>
     </form>
