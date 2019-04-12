@@ -7,11 +7,13 @@ const Popup = ({ closePopup, comics, title, image }) => (
       <div className="popup_inner-right">
         {title}
         <p>{comics.description}</p>
-        {comics.urls.map((link, index) => (
-          <a key={index} href={link.url}>
-            {link.type}
-          </a>
-        ))}
+        <div className="popup_inner-links">
+          {comics.urls.map((link, index) => (
+            <a key={index} href={link.url}>
+              {link.type}
+            </a>
+          ))}
+        </div>
       </div>
       <button onClick={closePopup}>close me</button>
     </div>

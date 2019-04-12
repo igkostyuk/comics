@@ -54,9 +54,7 @@ nav {
     outline: none;
     border: 1px solid blue;
   }
-  .search__select {
-    font-size: 12px;
-  }
+
   .search__input {
     width: 40vw;
   }
@@ -157,6 +155,15 @@ main {
     }
     p {
       font-size: 12px;
+    }
+    .popup_inner-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      a {
+        margin: 5px;
+        font-size: 14px;
+      }
     }
   }
   button {
