@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "9e08c2f55a7563651e52",
-    "url": "/comics/static/css/main.5286fef9.chunk.css"
+    "revision": "6cd11237d5e1a035da55",
+    "url": "/comics/static/css/main.a3cbf3be.chunk.css"
   },
   {
-    "revision": "9e08c2f55a7563651e52",
-    "url": "/comics/static/js/main.fd739d14.chunk.js"
+    "revision": "6cd11237d5e1a035da55",
+    "url": "/comics/static/js/main.5917f6cf.chunk.js"
   },
   {
     "revision": "57d136ffd59e2ac7898b",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/comics/static/media/GravityAnimating.34068f26.svg"
   },
   {
-    "revision": "79e189fb1611e940fea02d8457599ab2",
+    "revision": "3e9a13e4c290cbba3bbeb9a894eb4a6c",
     "url": "/comics/index.html"
   }
 ];
