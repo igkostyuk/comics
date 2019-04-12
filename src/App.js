@@ -40,7 +40,7 @@ class App extends Component {
     searchParams = Object.assign(searchParams, params);
     this.setState(searchParams);
   };
-  setComicsLParams = async params => {
+  setComicsParams = async params => {
     this.setState({ isLoading: true });
     this.updateSearchParams(params);
     setComicsSearchParams(this.state.searchParams);
@@ -72,10 +72,7 @@ class App extends Component {
     return (
       <div className="App">
         <nav>
-          <InputWrapper
-            handleSubmit={this.setComicsLParams}
-            {...searchParams}
-          />
+          <InputWrapper handleSubmit={this.setComicsParams} {...searchParams} />
         </nav>
 
         {isLoading ? (
