@@ -4,10 +4,10 @@ import loader from './GravityAnimating.svg';
 
 import { getComicsList } from './api';
 
-import Popup from './Popup';
-import Comics from './Comics';
-import InputWrapper from './InputWrapper';
-import Pagination from './Pagination';
+import Popup from './components/Popup/Popup';
+import Comics from './components/Comics/Comics';
+import InputWrapper from './components/InputWrapper/InputWrapper';
+import Pagination from './components/Pagination/Pagination';
 
 const Title = ({ title }) => <h2>{title}</h2>;
 const Image = ({ path, extension, alt }) => (
